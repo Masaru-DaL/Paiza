@@ -47,3 +47,11 @@ while($i <= $input) {
     $i++;
 }
 ?>
+
+<?php
+$input = trim(fgets(STDIN));
+
+for ($i = 1; $i <= $input; $i++) {
+     echo "眠い。\n";
+}
+?>
