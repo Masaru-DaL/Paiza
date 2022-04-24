@@ -54,3 +54,13 @@ for ($i = 1; $i <= $input; $i++) {
 
 ?>
 
+<?php
+$input = trim(fgets(STDIN));
+
+for ($i = 1; $i <= $input; $i++) {
+     // code...
+     echo trim(fgets(STDIN));
+}
+
+?>
+
