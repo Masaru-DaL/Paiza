@@ -24,6 +24,3 @@ for ($i = $year; $i < $send_year; $i++) {
     $shouwa = $i - 1925;
      echo "西暦" . $i . "年は、昭和" . $shouwa . "年です。\n";
 }
-
-?>
-
