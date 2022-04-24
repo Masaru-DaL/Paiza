@@ -15,3 +15,15 @@ for ($year = 1926; $year <= 1989; $year++) {
 }
 
 ?>
+
+<?php
+$year = trim(fgets(STDIN));
+$num = trim(fgets(STDIN));
+$send_year = $year + $num;
+for ($i = $year; $i < $send_year; $i++) {
+    $shouwa = $i - 1925;
+     echo "西暦" . $i . "年は、昭和" . $shouwa . "年です。\n";
+}
+
+?>
+
