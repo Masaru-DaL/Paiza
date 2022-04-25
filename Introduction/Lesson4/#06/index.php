@@ -19,6 +19,14 @@ while($input){
     $input = fgets(STDIN);
 }
 print_r($array);
-
 ?>
 
+<?php
+// 標準入力から1行取得し値があればループ
+    // 配列に$inputの値を追加
+while($input = fgets(STDIN)) {
+    $array[] = trim($input);
+}
+// 配列の値を出力
+print_r($array);
+?>
