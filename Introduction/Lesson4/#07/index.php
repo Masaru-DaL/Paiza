@@ -24,4 +24,14 @@ print_r($num);
 echo $num[$omikuji];
 ?>
 
+<?php
+// 今回は自力で全部書いてみよう！
+while($input = fgets(STDIN)) {
+    $array[] = trim($input);
+}
+$max = count($array)-1;
+print_r($array);
 
+$omikuji = rand(0, $max);
+echo $array[$omikuji];
+?>
