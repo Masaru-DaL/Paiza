@@ -16,3 +16,9 @@ $array = explode("/" , $input);
 print_r($array);
 ?>
 
+<?php
+$input = trim(fgets(STDIN));
+$array = explode("<>" , $input);
+print_r($array);
+?>
+
