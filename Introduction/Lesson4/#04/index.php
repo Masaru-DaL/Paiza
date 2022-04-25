@@ -71,3 +71,16 @@ while($input){
 
 echo $i;
 ?>
+
+<?php
+$i = 0;
+// 標準入力から1行取得し値があればループ
+while($input = fgets(STDIN)){
+     $input = trim($input);
+    if ($input == "勇者") {
+        $i++;
+    }
+    // 配列に$inputの値を追加
+}
+echo $i;
+?>
