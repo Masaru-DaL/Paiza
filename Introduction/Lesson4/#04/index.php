@@ -54,3 +54,33 @@ for ($i = 0; $i < $num; $i++) {
 }
 ?>
 
+<?php
+// 標準入力から1行データを取得
+$input = trim(fgets(STDIN));
+$i = 0;
+// $inputの値が空で無ければループする
+while($input){
+    // 配列に$inputの値を追加
+    $array[] = $input;
+    if ($input == "勇者") {
+        $i++;
+    }
+    // 標準入力から1行データを取得
+    $input = trim(fgets(STDIN));
+}
+
+echo $i;
+?>
+
+<?php
+$i = 0;
+// 標準入力から1行取得し値があればループ
+while($input = fgets(STDIN)){
+     $input = trim($input);
+    if ($input == "勇者") {
+        $i++;
+    }
+    // 配列に$inputの値を追加
+}
+echo $i;
+?>
