@@ -59,3 +59,14 @@ foreach ($teams as $team) {
 }
 ?>
 
+<?php
+// 各要素を3倍にして新しい配列を作成する
+
+$numbers = [12, 34, 56, 78, 90];
+
+// ここに、各要素を3倍にして新しい配列を作成するコードを記述する
+foreach ($numbers as $number) {
+    $numbers2[] = $number * 3;
+}
+print_r($numbers2);
+?>
