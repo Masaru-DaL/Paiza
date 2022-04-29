@@ -16,4 +16,13 @@ echo "hello" . $a . "\n";
 ?>
 
 <!-- 演習問題 -->
+<?php
+// 間違い探し
 
+function say_hello(){
+    $message = "Paiza";
+    echo "hello ".$message;
+}
+
+say_hello();
+?>
