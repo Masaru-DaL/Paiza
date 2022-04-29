@@ -24,3 +24,15 @@ $Greeting1 = new Greeting;
 $Greeting1 -> sayHello();
 ?>
 
+<?php
+// クラスにメソッドを定義しよう
+class Greeting {
+    // この下に、sayHelloメソッドを記述する
+    public function sayHello() {
+        echo "hello PHP";
+    }
+}
+
+$paiza = new Greeting();
+$paiza->sayHello();
+?>
