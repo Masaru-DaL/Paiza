@@ -30,4 +30,13 @@ function say_hello(){
 say_hello();
 ?>
 
+<?php
+// 間違い探し
+
+say_hello();
+
+function say_hello(){
+    echo "hello paiza";
+}
+ ?>
 
