@@ -32,11 +32,13 @@ say_hello();
 
 <?php
 // 間違い探し
+$message = "Paiza";
 
-say_hello();
-
-function say_hello(){
-    echo "hello paiza";
+function say_hello($message){
+    echo "hello " . $message;
 }
- ?>
+
+say_hello($message);
+?>
+
 
