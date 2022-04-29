@@ -12,3 +12,15 @@ $player1 -> walk();
 ?>
 
 <!-- 演習問題 -->
+<?php
+// インスタンスを実体化しよう
+class Greeting {
+    public function sayHello() {
+        echo "hello paiza";
+    }
+}
+
+$Greeting1 = new Greeting;
+$Greeting1 -> sayHello();
+?>
+
