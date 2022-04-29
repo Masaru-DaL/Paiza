@@ -24,4 +24,16 @@ $num1 = multiply(3, 4);
 echo $num1;
 ?>
 
+<?php
+// 掛け算関数を作成してみよう
+
+function multiply($x, $y){
+    // この下に処理を記述する
+    return $x * $y;
+}
+
+echo multiply(3, 4). "\n";
+echo multiply(5, 7). "\n";
+echo multiply(12, 34). "\n";
+?>
 
