@@ -22,6 +22,3 @@ foreach ($party as $member) {
     $member -> attack("スライム");
 }
 ?>
-
-<!-- 演習問題 -->
-
