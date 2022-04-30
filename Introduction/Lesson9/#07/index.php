@@ -46,4 +46,15 @@ echo Player::charactorCount() . "人で、スライムを攻撃した。\n";
 ?>
 
 <!-- 演習問題 -->
+<?php
+// クラスメソッドを呼び出そう
+class Greeting{
+    public static function say_hello(){
+        echo "hello paiza";
+    }
+}
+// この下で、クラスメソッドを呼び出す
+$greeting = new Greeting();
+$greeting -> say_hello();
+?>
 
