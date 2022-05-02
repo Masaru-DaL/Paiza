@@ -67,3 +67,13 @@
     {
         \URL::forceScheme('https');
     }
+
+## 07
+- コントローラーにコードを追加
+  - bbs - app - Http - Controllers - ArticleController.php
+  - インデックスメソッドの作成
+    - public function index()
+    {
+        return view('index');
+    }
+- viewの作成(アプリケーションの見た目を定義)
