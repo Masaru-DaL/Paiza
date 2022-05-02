@@ -34,3 +34,11 @@
             $table->string('user_name');
         });
     }
+  - マイグレーションを実行してDBにカラムの追加
+    - php artisan migrate
+- artisan tinkerで確認
+  - Article::all()
+- サンプルデータの追加
+  - $article = Article::find(1)
+  - $article->user_name = 'paiza'
+  - $article->save()
