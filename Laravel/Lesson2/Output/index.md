@@ -66,4 +66,11 @@
     - <p>{{ $article->user_name }}</p> を追加
 
 ## 05
-
+- ルーティングの確認
+  - bbs-routes-web.php
+- ルーティングの修正(/の後に何も付けないときの動作)
+Route::get('/', function () {
+    return redirect('/articles');
+});
+-> /だけを指定すると/articlesに切り替える
+- 
