@@ -78,7 +78,7 @@ Route::get('/', function () {
 - [new]というルーティングの追加
 Route::get('/article/new', 'ArticleController@create')->name('article.new');
   - /newが付いている場合にcreateメソッドを呼び出す
-- コントローラーの修正
+- コントローラーのcreateメソッドの修正
 public function create(Request $request)
     {
         $article = new Article();
@@ -93,4 +93,25 @@ public function create(Request $request)
   - ボディの綴じタグ前に
 <div>
     <a href={{ route('article.new') }}>新規投稿</a>
+</div>
+
+## 07
+- [delete]ルートの追加
+Route::delete('/article{id}', 'ArticleController@destroy')->name('article.delete');
+  - id指定した時にdestroyメソッドを呼び出す
+- コントローラーのdestroyメソッドの修正
+public function destroy(Request $request, $id, Article $article)
+    {
+        $article = Article::find($id); // 指定の記事を取り出し
+        $article->delete(); // 削除
+        return redirect('/articles');
+    }
+- 削除ボタン
+  - show.blade.php
+<div>
+    {{ Form::open(['method' => 'delete', 'route' => ['article.delete', $article->id]]) }}
+          // 'method' => 'delete', 'route'(をクリックすると)
+          // 'route' => ['article.delete', $article->id (deleteメソッドでアーティクルデリートというルートを呼び出す)
+        {{ Form::submit('削除') }} // 削除ボタンの表示
+    {{ Form::close() }}
 </div>
