@@ -49,3 +49,21 @@
   - サンプルデータの登録
     - 挿入 -> 3行ずつ挿入を行う
     - hello world, hello laravel, 世界の皆さん、こんにちは
+
+## 06
+- ルーティングの確認
+  - bbs - routes - web.php
+- ルートの追加
+  - 一覧ページ
+    - Route::get('/articles', 'ArticleController@index')->name('article.list');
+      - /articlesにアクセスするとArticleControllerのindexメソッドが呼び出される
+      - nameがついているのでarticle.listでリンクを貼ることができる
+  - 詳細ページ
+    - Route::get('/article/{id}', 'ArticleController@show')->name('article.show');
+      - id=整数で指定
+- httpsを使うようアプリケーションの全体の設定を変更
+  - bbs - app - providers - AppServiceProvider.php
+    - public function register()
+    {
+        \URL::forceScheme('https');
+    }
