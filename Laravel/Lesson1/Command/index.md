@@ -77,3 +77,26 @@
         return view('index');
     }
 - viewの作成(アプリケーションの見た目を定義)
+  - bbs - resources - views - ファイルの新規作成
+    - index.blade.php
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>paiza bbs</title>
+        <style>body {padding: 10px;}</style>
+    </head>
+    <body>
+        <h1>paiza bbs</h1>
+    </body>
+</html>
+
+- コントローラーからビューにデータを渡す
+  - ArticleController.php
+    - public function index()
+      {
+          $message = 'Welcome to my BBS';
+          return view('index', ['message' => $message]);
+      }
+  - index.blade.php
+    -
