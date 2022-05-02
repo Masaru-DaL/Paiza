@@ -73,4 +73,6 @@ Route::get('/', function () {
     return redirect('/articles');
 });
 -> /だけを指定すると/articlesに切り替える
-- 
+
+## 06
+
