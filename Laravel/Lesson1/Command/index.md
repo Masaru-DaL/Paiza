@@ -13,4 +13,13 @@
 - Q1
   - Laravel -> Hello paiza
 - Q2
-  - 
+## 04
+- DBの作成
+  - php -> phpmyadmin
+  - DB -> DBを作成する -> my bbs -> utf8_general_cl
+- データベースの呼び出しの設定
+  - 隠しファイル
+    - .env
+      - DB_DATABASE=mybbs
+      - DB_USERNAME=root
+      - DB_PASSWORD -> コメントアウト
