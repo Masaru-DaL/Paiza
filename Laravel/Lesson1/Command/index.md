@@ -10,3 +10,7 @@
   - bbs -> resources -> views -> welcome.blade.php
 - 日時の埋め込み
   - <p><?= date('Y/m/d H:i:s') ?></p>
+- Q1
+  - Laravel -> Hello paiza
+- Q2
+  - 
