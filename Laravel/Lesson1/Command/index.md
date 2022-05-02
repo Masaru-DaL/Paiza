@@ -99,4 +99,5 @@
           return view('index', ['message' => $message]);
       }
   - index.blade.php
-    -
+    - bodyタグ内に
+    - <p>{{ $message }}</p>
