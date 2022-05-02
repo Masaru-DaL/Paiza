@@ -44,3 +44,23 @@
   - $article->save()
 
 ## 04
+- アプリケーションのモデル
+  - bbs-app-Article.php
+- ルーティング
+  - bbs-routes-web.php
+- コントローラー
+  - bbs-app-Http-Controllers-ArticleController.php
+  - appディレクトリのArticleモデルをuseすることで記事データを扱うことができる
+- viewファイル
+  - bbs-resources-viewsディレクトリ内
+  - ブレードというテンプレートエンジンを利用
+  - index
+    - articlesからループで要素を取り出して、各記事のコンテントを表示する
+  - show
+    - コントローラーから受け取った個別の記事を表示させる
+- user_name
+  - viewファイルの変更
+  - index
+    - {{ $article->user_name }} を追加
+  - show
+    - <p>{{ $article->user_name }}</p> を追加
