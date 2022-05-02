@@ -13,6 +13,7 @@
 - Q1
   - Laravel -> Hello paiza
 - Q2
+
 ## 04
 - DBの作成
   - php -> phpmyadmin
@@ -23,3 +24,28 @@
       - DB_DATABASE=mybbs
       - DB_USERNAME=root
       - DB_PASSWORD -> コメントアウト
+- Q1
+  - DB_DATABASE=myblogdb
+  - DB_USERNAME=root
+  - # DB_PASSWORD=secret
+
+## 05
+- モデルの作成
+  - ターミナル -> プロジェクトに移動
+  - php artisan make:model Article -m -c -r
+    - appディレクトリにArticle.phpファイルが作成される
+  - Http -> Controllers -> ArticleController.php
+    - アプリケーションの動作に合わせてコードを記述する
+  - Database -> migrations -> マイグレーションファイル
+    - データベースを設定するためのファイル
+    - ここで記述した内容をデータベースに反映させる
+      - コンテントカラムの追加
+        - idの下
+          - $table->string('content');
+          - 保存
+          - マイグレーションファイルの実行
+            - ターミナル
+            - php artisan migrate
+  - サンプルデータの登録
+    - 挿入 -> 3行ずつ挿入を行う
+    - hello world, hello laravel, 世界の皆さん、こんにちは
