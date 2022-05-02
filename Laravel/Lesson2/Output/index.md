@@ -75,4 +75,22 @@ Route::get('/', function () {
 -> /だけを指定すると/articlesに切り替える
 
 ## 06
+- [new]というルーティングの追加
+Route::get('/article/new', 'ArticleController@create')->name('article.new');
+  - /newが付いている場合にcreateメソッドを呼び出す
+- コントローラーの修正
+public function create(Request $request)
+    {
+        $article = new Article();
 
+        $article->content = 'Hello BBS';
+        $article->user_name = 'paiza';
+        $article->save();
+        return redirect('/articles');
+    }
+- ※newのルーティングをid指定のルーティングより前に記述しないとエラーになってしまう
+- 記事一覧のページに新規ページを作成するリンクの作成
+  - ボディの綴じタグ前に
+<div>
+    <a href={{ route('article.new') }}>新規投稿</a>
+</div>
