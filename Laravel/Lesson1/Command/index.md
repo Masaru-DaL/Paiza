@@ -101,3 +101,18 @@
   - index.blade.php
     - bodyタグ内に
     - <p>{{ $message }}</p>
+
+## 08
+- サンプルデータ一覧の表示
+  - bbs-app-Http-Controllers-ArticleController.php
+    - public function index()
+    {
+        $message = 'Welcome to my BBS';
+        $articles = Article::all();
+        return view('index', ['message' => $message, 'articles' => $articles]);
+    }
+  - bbs-resources-views-index.blade.php
+    - bodyタグ内(メッセージ変数のpタグの下)
+@foreach ($articles as $article)
+    <p>{{ $article->content }}</p>
+@endforeach
