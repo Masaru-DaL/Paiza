@@ -116,3 +116,33 @@
 @foreach ($articles as $article)
     <p>{{ $article->content }}</p>
 @endforeach
+
+## 09
+- showメソッドの記述
+  - bbs-app-Http-Controllers-ArticleController.php
+  - public function show(Request $request, $id, Article $article)
+    {
+        $message = 'This is your article ' . $id;
+        $article = Article::find($id);
+        return view('show', ['message' => $message, 'article' =>$article]);
+    }
+- viewの作成
+  - cp resources/views/index.blade.php resources/views/show.blade.php
+- show.blade.php ->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title>paiza bbs</title>
+        <style>body {padding: 10px;}</style>
+    </head>
+    <body>
+        <h1>paiza bbs</h1>
+        <p>{{ $message }}</p>
+        <p>{{ $article->content }}</p>
+
+        <p>
+            <a href={{ route('article.list') }}>一覧に戻る</a>
+        </p>
+    </body>
+</html>
