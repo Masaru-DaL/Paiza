@@ -14,7 +14,7 @@
   - Laravel -> Hello paiza
 - Q2
 
-## 04
+## 04 一行掲示板を作ろう
 - DBの作成
   - php -> phpmyadmin
   - DB -> DBを作成する -> my bbs -> utf8_general_cl
@@ -27,9 +27,9 @@
 - Q1
   - DB_DATABASE=myblogdb
   - DB_USERNAME=root
-  - # DB_PASSWORD=secret
+  - // DB_PASSWORD=secret
 
-## 05
+## 05 モデルとコントローラを用意する
 - モデルの作成
   - ターミナル -> プロジェクトに移動
   - php artisan make:model Article -m -c -r
