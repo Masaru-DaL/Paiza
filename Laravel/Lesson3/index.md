@@ -75,7 +75,7 @@ bodyタグ内に @include('nav') を追加で記述
 @section('content')
     <h1>paiza bbs</h1>
     <p>{{ $message }}</p>
-    <table class='table table-striped table-hover'>
+    <table class='table table-striped table-hover'> // 1行ごとに色を付け、マウスホバーで色を変える
          @foreach ($articles as $article)
             <tr>
                 <td>
@@ -92,5 +92,29 @@ bodyタグ内に @include('nav') を追加で記述
 
     <div>
         <a href={{ route('article.new') }}>新規投稿</a>
+    </div>
+@endsection
+
+- リンクをボタンで表示
+  - index.blade.php(body-divタグ内)
+<a href={{ route('article.new') }} class='btn btn-outline-primary'>新規投稿</a>
+
+- 詳細ページのボタンの変更
+  - show.blade.php
+@extends('layout')
+
+@section('content')
+    <h1>paiza bbs</h1>
+    <p>{{ $message }}</p>
+    <p>{{ $article->content }}</p>
+    <p>{{ $article->user_name }}</p>
+
+    <p>
+        <a href={{ route('article.list') }} class='btn btn-outline-primary'>一覧に戻る</a>
+    </p>
+    <div>
+        {{ Form::open(['method' => 'delete', 'route' => ['article.delete', $article->id]]) }}
+            {{ Form::submit('削除', ['class' => 'btn btn-outline-secondary']) }}
+        {{ Form::close() }}
     </div>
 @endsection
