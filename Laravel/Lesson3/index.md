@@ -66,3 +66,31 @@
 - 共通テンプレートに追加
   - layout.blade.php
 bodyタグ内に @include('nav') を追加で記述
+
+## 04 Bootstrapでページの見栄えを整えよう
+- 記事の一覧をテーブルタグで表示
+  - index.blade.php
+@extends('layout')
+
+@section('content')
+    <h1>paiza bbs</h1>
+    <p>{{ $message }}</p>
+    <table class='table table-striped table-hover'>
+         @foreach ($articles as $article)
+            <tr>
+                <td>
+                    <a href='{{ route("article.show", ["id" =>  $article->id]) }}'>
+                    {{ $article->content }}
+                    </a>
+                </td>
+                <td>
+                    {{ $article->user_name }}
+                </td>
+            </tr>
+        @endforeach
+    </table>
+
+    <div>
+        <a href={{ route('article.new') }}>新規投稿</a>
+    </div>
+@endsection
