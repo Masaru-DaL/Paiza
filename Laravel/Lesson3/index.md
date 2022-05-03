@@ -9,9 +9,9 @@
 
 - 各画面のビューを修正
   - 記事一覧 -> index.blade.php
-@extends('layout')
+@extends('layout') // 共通テンプレートを指定
 
-@section('content')
+@section('content') // ~@endsectionまでをyieldに当てはめる
     <h1>paiza bbs</h1>
     <p>{{ $message }}</p>
     @foreach ($articles as $article)
@@ -26,3 +26,6 @@
         <a href={{ route('article.new') }}>新規投稿</a>
     </div>
 @endsection
+
+- 詳細ページの修正
+  - show.blade.php
