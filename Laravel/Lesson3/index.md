@@ -42,3 +42,18 @@
 <style>body {padding-top: 80px;}</style>
 
 - 共通テンプレートの読み込みを記述
+  - layout.blade.php
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title>paiza bbs</title>
+        @include('style-sheet')
+    </head>
+    <body>
+        <div class='container'>
+            @yield('content')
+        </div>
+    </body>
+</html>
+
