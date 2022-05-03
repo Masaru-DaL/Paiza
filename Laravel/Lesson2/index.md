@@ -1,5 +1,5 @@
 # Laravel Lesson2
-## 02
+## 02 artisan tinkerでデータベースを確認しよう
 - artisan tinker
   - 対話型コンソール
   - 呼び出し
@@ -19,7 +19,7 @@
     - 最後に追加したものは$articleに格納されているので
     - $article->delete()
 
-## 03
+## 03 マイグレーションで、カラムを追加しよう
 - ユーザーネームカラムの追加
   - マイグレーションファイルの自動生成
     -  php artisan make:migration add_column_username --table=articles
@@ -43,7 +43,7 @@
   - $article->user_name = 'paiza'
   - $article->save()
 
-## 04
+## 04 モデルに追加したカラムをビューで表示しよう
 - アプリケーションのモデル
   - bbs-app-Article.php
 - ルーティング
