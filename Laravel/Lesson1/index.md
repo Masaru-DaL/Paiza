@@ -102,7 +102,7 @@
     - bodyタグ内に
     - <p>{{ $message }}</p>
 
-## 08
+## 08 記事一覧を作成しよう
 - サンプルデータ一覧の表示
   - bbs-app-Http-Controllers-ArticleController.php
     - public function index()
@@ -117,7 +117,7 @@
     <p>{{ $article->content }}</p>
 @endforeach
 
-## 09
+## 09 詳細画面を作ろう
 - showメソッドの記述
   - bbs-app-Http-Controllers-ArticleController.php
   - public function show(Request $request, $id, Article $article)
