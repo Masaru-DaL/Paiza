@@ -48,12 +48,21 @@
     <head>
         <meta charset='utf-8'>
         <title>paiza bbs</title>
-        @include('style-sheet')
+        @include('style-sheet') // style-sheet.blade.phpの読み込み
     </head>
     <body>
-        <div class='container'>
+        <div class='container'> // 見た目の部分をコンテナで指定する
             @yield('content')
         </div>
     </body>
 </html>
 
+- ナビゲーションバーの追加
+  - viewディレクトリにnav.blade.phpを新規作成
+<nav class='navbar navbar-expand-md navbar-dark bg-dark fixed-top'> // 複数のクラスを指定可能
+    <a class='navbar-brand' href={{ route('article.list') }}>paiza bbs</a>
+</nav>
+
+- 共通テンプレートに追加
+  - layout.blade.php
+bodyタグ内に @include('nav') を追加で記述
