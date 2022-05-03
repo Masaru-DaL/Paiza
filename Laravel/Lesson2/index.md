@@ -65,7 +65,7 @@
   - show
     - <p>{{ $article->user_name }}</p> を追加
 
-## 05
+## 05 Laravelのルーティングを理解しよう
 - ルーティングの確認
   - bbs-routes-web.php
 - ルーティングの修正(/の後に何も付けないときの動作)
@@ -74,7 +74,7 @@ Route::get('/', function () {
 });
 -> /だけを指定すると/articlesに切り替える
 
-## 06
+## 06 データベースに書き込んでみよう
 - [new]というルーティングの追加
 Route::get('/article/new', 'ArticleController@create')->name('article.new');
   - /newが付いている場合にcreateメソッドを呼び出す
@@ -95,7 +95,7 @@ public function create(Request $request)
     <a href={{ route('article.new') }}>新規投稿</a>
 </div>
 
-## 07
+## 07 データベースから記事を削除しよう
 - [delete]ルートの追加
 Route::delete('/article{id}', 'ArticleController@destroy')->name('article.delete');
   - id指定した時にdestroyメソッドを呼び出す
