@@ -50,7 +50,7 @@
     - 挿入 -> 3行ずつ挿入を行う
     - hello world, hello laravel, 世界の皆さん、こんにちは
 
-## 06
+## 06 ルーティングを定義しよう
 - ルーティングの確認
   - bbs - routes - web.php
 - ルートの追加
@@ -68,7 +68,7 @@
         \URL::forceScheme('https');
     }
 
-## 07
+## 07 コントローラとビューを作成しよう
 - コントローラーにコードを追加
   - bbs - app - Http - Controllers - ArticleController.php
   - インデックスメソッドの作成
