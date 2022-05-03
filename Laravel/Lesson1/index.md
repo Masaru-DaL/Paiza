@@ -1,11 +1,11 @@
 # Laravel Lesson1
-## 02
+## 02 アプリケーションを用意しよう
 - プロジェクトの作成
   - laravel new [プロジェクト名]
 - サーバの起動
   - php artisan serve
 
-## 03
+## 03 LaravelでHelloworld
 - サーバのファイルの変更
   - bbs -> resources -> views -> welcome.blade.php
 - 日時の埋め込み
