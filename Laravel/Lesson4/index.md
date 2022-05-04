@@ -23,14 +23,40 @@ $ php artisan make:model Shop -m -c -r
 // database-migrationsディレクトリにマイグレーションファイルが作成されている
 
 - カテゴリーのマイグレーションファイルにカラムを追加
-  - ShopController.php
+  - Shops
 public function up()
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('name'); // 文字情報を保存するためにstringを指定
             $table->timestamps();
         });
     }
 
--
+- Shopsマイグレーションファイルにカラムを追加
+  - categories
+public function up()
+    {
+        Schema::create('shops', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->string('address');
+            $table->integer('category_id'); // お店のカテゴリーを指定するためにカテゴリーidカラムを追加
+            $table->timestamps();
+        });
+    }
+
+- migrationを実行してDBに反映させる
+$ php artisan migrate
+
+## 04:お店とカテゴリのテーブルを関連付けよう
+- Shopモデルにリレーションを設定
+  - Providers-shop.php
+class Shop extends Model
+{
+    public function category()
+    {
+        return $this->belongsTo('App\category');
+    }
+}
+
