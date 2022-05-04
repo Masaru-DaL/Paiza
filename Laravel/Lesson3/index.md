@@ -173,3 +173,19 @@ public function index(Request $request)
         return view('index', ['message' => $message, 'articles' => $articles]);
     }
 // whereメソッドで受け取ったキーワードを検索し、該当する記事だけ取り出す
+
+## 07 掲示板のルーティングを設計しよう
+- 一行掲示板のルーティングの追加
+  - web.php(以下の3つを追加)
+Route::post('/article', 'ArticleController@store')->name('article.store');
+Route::get('/article/edit/{id}', 'ArticleController@edit')->name('article.edit');
+Route::post('/article/update/{id}', 'ArticleController@update')->name('article.update');
+
+- 動作確認のため、editメソッドに詳細ページを呼び出すコードをコピー
+  - ArticleController.php
+public function edit(Request $request, $id, Article $article)
+    {
+        $message = 'Edit your article ' . $id;
+        $article = Article::find($id);
+        return view('show', ['message' => $message, 'article' => $article]);
+    }
