@@ -103,3 +103,30 @@ class AppServiceProvider extends ServiceProvider
 }
 
 ## 05:お店の一覧ページを作ろう
+- お店一覧のルーティングを定義する
+  - routes/web.php
+<?php
+
+Route::get('/shops', 'ShopController@index')->name('shop.list');
+
+Route::get('/', function () {
+    return redirect('/shops');
+});
+
+- コントローラにお店一覧を記述する
+  - app/Http/Controllers/ShopController.php
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Shop;
+use Illuminate\Http\Request;
+
+class ShopController extends Controller
+{
+    public function index()
+    {
+        $shops = Shop::all();
+        return view('index', ['shops' => $shops]);
+    }
+}
