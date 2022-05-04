@@ -289,3 +289,69 @@ Route::get('/', function () {
         @endforeach
     </table>
 @endsection
+
+## 08:新規投稿フォームを作ろう
+- ルーティングを設定する
+  - routes/web.php
+Route::get('/shops', 'ShopController@index')->name('shop.list');
+Route::get('/shop/new', 'ShopController@create')->name('shop.new');
+Route::post('/shop', 'ShopController@store')->name('shop.store');
+
+Route::get('/shop/{id}', 'ShopController@show')->name('shop.detail');
+
+Route::get('/', function () {
+    return redirect('/shops');
+});
+
+- コントローラのcreate()を記述する
+  - app/Http/Controllers/ShopController.php:
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Shop;
+use App\Category;
+use Illuminate\Http\Request;
+
+/**
+    * Show the form for creating a new resource.
+    *
+    * @return \Illuminate\Http\Response
+    */
+public function create()
+{
+    $shop = new Shop;
+    $categories = Category::all()->pluck('name', 'id');
+    return view('new', ['shop' => $shop, 'categories' => $categories]);
+}
+
+- 新規投稿フォームのビューを追加する
+  - resources/views/new.blade.php
+
+@extends('layout')
+
+@section('content')
+    <h1>新しいお店</h1>
+    {{ Form::open(['route' => 'shop.store']) }}
+        <div class='form-group'>
+            {{ Form::label('name', '店名:') }}
+            {{ Form::text('name', null) }}
+        </div>
+        <div class='form-group'>
+            {{ Form::label('address', '住所:') }}
+            {{ Form::text('address', null) }}
+        </div>
+        <div class='form-group'>
+            {{ Form::label('category_id', 'カテゴリ:') }}
+            {{ Form::select('category_id', $categories) }}
+        </div>
+        <div class="form-group">
+            {{ Form::submit('作成する', ['class' => 'btn btn-outline-primary']) }}
+        </div>
+    {{ Form::close() }}
+
+    <div>
+        <a href={{ route('shop.list') }}>一覧に戻る</a>
+    </div>
+
+@endsection
