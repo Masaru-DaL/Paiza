@@ -76,3 +76,30 @@ VALUES
     ('パイザ亭', '東京都港区南青山3丁目', 1),
     ('ラーメンLaravel', '東京都港区東青山', 2),
     ('そばの霧島', '東京都港区西青山', 3);
+
+-  PaizaCloud用https対応
+   - app/Providers/AppServiceProvider.php
+class AppServiceProvider extends ServiceProvider
+{
+    /**
+     * Bootstrap any application services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        \URL::forceScheme('https');
+    }
+
+    /**
+     * Register any application services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        //
+    }
+}
+
+## 05:お店の一覧ページを作ろう
