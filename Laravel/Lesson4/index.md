@@ -225,3 +225,67 @@ resources/views/index.blade.php
         </div>
     </body>
 </html>
+
+## 07:お店の詳細ページを作ろう
+- ルーティングを設定する
+  - routes/web.php
+Route::get('/shops', 'ShopController@index')->name('shop.list');
+Route::get('/shop/{id}', 'ShopController@show')->name('shop.detail');
+
+Route::get('/', function () {
+    return redirect('/shops');
+});
+
+- コントローラを記述する
+  - app/Http/Controllers/ShopController.php
+/**
+     * Display the specified resource.
+     *
+     * @param  \App\Shop  $shop
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $shop = Shop::find($id);
+        return view('show', ['shop' => $shop]);
+    }
+
+- ビューを追加する
+  - resources/views/show.blade.php
+@extends('layout')
+
+@section('content')
+    <h1>{{ $shop->name }}</h1>
+    <div>
+        <p>{{ $shop->category->name }}</p>
+        <p>{{ $shop->address }}</p>
+    </div>
+    <div>
+        <a href={{ route('shop.list') }}>一覧に戻る</a>
+    </div>
+@endsection
+
+- お店一覧をテーブルタグにして、リンクを追加
+  - resources/views/index.blade.php
+@extends('layout')
+
+@section('content')
+    <h1>お店一覧</h1>
+
+    <table class='table table-striped table-hover'>
+        <tr>
+            <th>カテゴリ</th><th>店名</th><th>住所</th>
+        </tr>
+        @foreach ($shops as $shop)
+            <tr>
+                <td>{{ $shop->category->name }}</td>
+                <td>
+                    <a href={{ route('shop.detail', ['id' =>  $shop->id]) }}>
+                        {{ $shop->name }}
+                    </a>
+                </td>
+                <td>{{ $shop->address }}</td>
+            </tr>
+        @endforeach
+    </table>
+@endsection
