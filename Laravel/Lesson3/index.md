@@ -118,3 +118,23 @@ bodyタグ内に @include('nav') を追加で記述
         {{ Form::close() }}
     </div>
 @endsection
+
+## 05 検索フォームを設置しよう
+- 検索フォームを表示するテンプレートの作成
+  - viewディレクトリに、search.blade.phpを新規作成
+{{ Form::open(['method' => 'get']) }}
+    {{ csrf_field() }}
+    <div>
+        {{ Form::label('keyword', 'キーワード:') }}
+        {{ Form::text('keyword', null, ['class' => 'form-control']) }}
+    </div>
+    <div class='form-group'>
+        {{ Form::submit('検索', ['class' => 'btn btn-outline-primary']) }}
+        <a href={{ route('article.list') }}>クリア</a>
+    </div>
+{{ Form::close() }}
+
+- 記事一覧のビューに検索フォームのテンプレートを追加
+  - index.blade.php
+<p>{{ $message }}</p> の下に
+@include('search')
