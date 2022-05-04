@@ -130,3 +130,49 @@ class ShopController extends Controller
         return view('index', ['shops' => $shops]);
     }
 }
+
+- お店一覧のビューを作成する
+  - resources/views/index.blade.php
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title>Lunchmap</title>
+        <style>body {padding: 10px;}</style>
+    </head>
+    <body>
+        <h1>お店一覧</h1>
+
+        @foreach ($shops as $shop)
+            <p>
+                {{ $shop->category->name }},
+                {{ $shop->name }},
+                {{ $shop->address }}
+            </p>
+        @endforeach
+    </body>
+</html> お店一覧のビューを作成する
+resources/views/index.blade.php
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title>Lunchmap</title>
+        <style>body {padding: 10px;}</style>
+    </head>
+    <body>
+        <h1>お店一覧</h1>
+
+        @foreach ($shops as $shop)
+            <p>
+                {{ $shop->category->name }},
+                {{ $shop->name }},
+                {{ $shop->address }}
+            </p>
+        @endforeach
+    </body>
+</html>
+
+## 06:共通テンプレートにBootstrapを導入しよう
+
