@@ -142,7 +142,7 @@ bodyタグ内に @include('nav') を追加で記述
 ## 06 フォームの値を取得しよう
 - 検索フォームからゲットメソッドでキーワードを受け取ったら、該当の記事を表示するよう修正
   - ArticleController.php
-    public function index(Request $request)
+public function index(Request $request)
     {
         if ($request->filled('keyword')) {
             $keyword = $request->input('keyword');
@@ -157,3 +157,19 @@ bodyタグ内に @include('nav') を追加で記述
 // if文でキーワードのデータが存在しているかチェックする
 // filledメソッドはキーワードが存在していて、同時に空ではないかをチェックする
 // キーワードを受け取っていたら、メッセージ変数にキーワードを連結し、そうでなければメッセージをそのまま表示する
+
+- 受け取ったデータで記事一覧に表示する記事を絞り込む
+  - ArticleController.php
+public function index(Request $request)
+    {
+        if ($request->filled('keyword')) {
+            $keyword = $request->input('keyword');
+            $message = 'Welcome to my BBS: ' . $keyword;
+            $articles = Article::where('content', 'like', '%' . $keyword . '%')->get();
+        } else {
+            $message = 'Welcome to my BBS';
+            $articles = Article::all();
+        }
+        return view('index', ['message' => $message, 'articles' => $articles]);
+    }
+// whereメソッドで受け取ったキーワードを検索し、該当する記事だけ取り出す
