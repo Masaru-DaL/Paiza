@@ -324,7 +324,7 @@ public function create()
     $categories = Category::all()->pluck('name', 'id');
     return view('new', ['shop' => $shop, 'categories' => $categories]);
 }
-
+// pluckメソッド -> 要素の中から指定した項目だけを取り出してくれる
 - 新規投稿フォームのビューを追加する
   - resources/views/new.blade.php
 
@@ -354,4 +354,52 @@ public function create()
         <a href={{ route('shop.list') }}>一覧に戻る</a>
     </div>
 
+@endsection
+
+## 09:投稿フォームの内容を保存しよう
+- コントローラのstore()を記述する
+  - app/Http/Controllers/ShopController.php:
+/**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $shop = new Shop;
+        $shop->name = request('name');
+        $shop->address = request('address');
+        $shop->category_id = request('category_id');
+        $shop->save();
+        return redirect()->route('shop.detail', ['id' => $shop->id]);
+    }
+
+- 一覧ページから新規投稿フォームにリンクする
+  - resources/views/index.blade.php
+@extends('layout')
+
+@section('content')
+    <h1>お店一覧</h1>
+
+    <table class='table table-striped table-hover'>
+        <tr>
+            <th>カテゴリ</th><th>店名</th><th>住所</th>
+        </tr>
+        @foreach ($shops as $shop)
+            <tr>
+                <td>{{ $shop->category->name }}</td>
+                <td>
+                    <a href={{ route('shop.detail', ['id' =>  $shop->id]) }}>
+                        {{ $shop->name }}
+                    </a>
+                </td>
+                <td>{{ $shop->address }}</td>
+            </tr>
+        @endforeach
+    </table>
+
+    <div>
+        <a href={{ route('shop.new') }} class='btn btn-outline-primary'>新しいお店</a>
+    <div>
 @endsection
