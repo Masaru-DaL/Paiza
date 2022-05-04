@@ -213,4 +213,39 @@ public function create(Request $request)
     }
 
 ## 09 記事の保存機能を完成させよう
+- 新規投稿フォームをnew.blade.phpに記述する
+@extends('layout')
 
+@section('content')
+    <h1>paiza bbs</h1>
+    <p>{{ $message }}</p>
+    {{ Form::open(['route' => 'article.store']) }}
+        <div class='form-group'>
+            {{ Form::label('content', 'Content:') }}
+            {{ Form::text('content', null) }}
+        </div>
+        <div class='form-group'>
+            {{ Form::label('user_name', 'Name:') }}
+            {{ Form::text('user_name', null) }}
+        </div>
+        <div class="form-group">
+            {{ Form::submit('作成する', ['class' => 'btn btn-primary']) }}
+            <a href={{ route('article.list') }}>一覧に戻る</a>
+        </div>
+    {{ Form::close() }}
+@endsection
+// 作成するボタンをクリックするとアーティクルのストアという名前のルートを呼び出す
+
+- 投稿内容を保存するようstoreメソッドを修正する
+  - ArticleController.php
+public function store(Request $request)
+    {
+        $article = new Article;
+
+        $article->content = $request->content;
+        $article->user_name = $request->user_name;
+        $article->save();
+        return redirect->route('article.show', ['id' => $article->id]);
+    }
+// 投稿内容をDBに格納するメソッド
+// $request->contentで投稿を取り出し -> $request->user_nameで投稿者名を取り出す
