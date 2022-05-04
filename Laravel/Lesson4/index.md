@@ -59,4 +59,20 @@ class Shop extends Model
         return $this->belongsTo('App\category');
     }
 }
+// belongsTo -> 所属するという意味 = カテゴリーモデルに所属しているという意味
+// 自動的にショップモデルのカテゴリーidに一致するカテゴリーを見つけてくれる
 
+- phpmyadminでサンプルデータを投入
+  - categoriesテーブル
+INSERT INTO categories(name)
+VALUES
+    ('イタリアン'),
+    ('中華'),
+    ('和食');
+
+  - shopsテーブル
+INSERT INTO shops(name,address,category_id)
+VALUES
+    ('パイザ亭', '東京都港区南青山3丁目', 1),
+    ('ラーメンLaravel', '東京都港区東青山', 2),
+    ('そばの霧島', '東京都港区西青山', 3);
