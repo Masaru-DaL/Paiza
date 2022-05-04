@@ -189,3 +189,6 @@ public function edit(Request $request, $id, Article $article)
         $article = Article::find($id);
         return view('show', ['message' => $message, 'article' => $article]);
     }
+
+## 08 新規投稿フォームを作成しよう
+
