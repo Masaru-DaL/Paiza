@@ -211,3 +211,6 @@ public function create(Request $request)
         $message = 'New article';
         return view('new', ['message' => $message]);
     }
+
+## 09 記事の保存機能を完成させよう
+
