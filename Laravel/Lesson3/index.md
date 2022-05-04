@@ -138,3 +138,22 @@ bodyタグ内に @include('nav') を追加で記述
   - index.blade.php
 <p>{{ $message }}</p> の下に
 @include('search')
+
+## 06 フォームの値を取得しよう
+- 検索フォームからゲットメソッドでキーワードを受け取ったら、該当の記事を表示するよう修正
+  - ArticleController.php
+    public function index(Request $request)
+    {
+        if ($request->filled('keyword')) {
+            $keyword = $request->input('keyword');
+            $message = 'Welcome to my BBS: ' . $keyword;
+        } else {
+            $message = 'Welcome to my BBS';
+        }
+        $articles = Article::all();
+        return view('index', ['message' => $message, 'articles' => $articles]);
+    }
+// ゲットメソッドで受け取ったデータは引数に指定したリクエスト変数で取り出すことができる
+// if文でキーワードのデータが存在しているかチェックする
+// filledメソッドはキーワードが存在していて、同時に空ではないかをチェックする
+// キーワードを受け取っていたら、メッセージ変数にキーワードを連結し、そうでなければメッセージをそのまま表示する
