@@ -13,3 +13,24 @@ DB_USERNAME=root
 // DB_PASSWORD=secret
 
 ## 03:モデルとコントローラを用意しよう
+- モデルファイルを作成
+$ cd lunchmap
+$ php artisan make:model Category -m
+$ php artisan make:model Shop -m -c -r
+// appディレクトリにCategory.phpとShop.phpが作成されている(モデルファイル)
+// table名は複数形で表すが、モデルは単数形かつ先頭を大文字で記述する
+// Http-ControllersディレクトリにShopController.phpが作成されている -> lunchmapアプリのコントローラ
+// database-migrationsディレクトリにマイグレーションファイルが作成されている
+
+- カテゴリーのマイグレーションファイルにカラムを追加
+  - ShopController.php
+public function up()
+    {
+        Schema::create('categories', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->timestamps();
+        });
+    }
+
+-
