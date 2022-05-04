@@ -191,4 +191,23 @@ public function edit(Request $request, $id, Article $article)
     }
 
 ## 08 新規投稿フォームを作成しよう
+- コントローラのstoreメソッドで、固定テキストを保存する
+  - ArticleController.php
+    - createメソッドをstoreメソッドにコピー
+public function store(Request $request)
+    {
+        $article = new Article();
 
+        $article->content = 'Hello BBS';
+        $article->user_name = 'paiza';
+        $article->save();
+        return redirect('/articles');
+    }
+
+- createメソッドで、フォームを呼び出すように修正
+  - ArticleController.php
+public function create(Request $request)
+    {
+        $message = 'New article';
+        return view('new', ['message' => $message]);
+    }
