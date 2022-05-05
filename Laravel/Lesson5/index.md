@@ -248,3 +248,7 @@ class AddUserIdToShopsTable extends Migration
         });
     }
 }
+
+- マイグレート
+$ php artisan migrate
+
