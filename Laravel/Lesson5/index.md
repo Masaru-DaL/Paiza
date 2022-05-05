@@ -312,3 +312,25 @@ class Shop extends Model
         <div>
     @endauth
 @endsection
+
+## 08:自分で投稿した情報のみ更新・削除できるようにしよう
+- 新規投稿時に、user_idカラムを保存する
+  - app/Http/Controllers/ShopController.php
+/**
+    * Store a newly created resource in storage.
+    *
+    * @param  \Illuminate\Http\Request  $request
+    * @return \Illuminate\Http\Response
+    */
+public function store(Request $request)
+{
+    $shop = new Shop;
+    $user = \Auth::user();
+
+    $shop->name = request('name');
+    $shop->address = request('address');
+    $shop->category_id = request('category_id');
+    $shop->user_id = $user->id;
+    $shop->save();
+    return redirect()->route('shop.detail', ['id' => $shop->id]);
+}
