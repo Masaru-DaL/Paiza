@@ -418,3 +418,12 @@ Route::get('/shop/{id}', 'ShopController@show')->name('shop.detail');
 Route::get('/', function () {
     return redirect('/shops');
 });
+
+- コントローラのedit()を追記
+  - app/Http/Controllers/ShopController.php:
+    public function edit($id)
+    {
+        $shop = Shop::find($id);
+        $categories = Category::all()->pluck('name', 'id');
+        return view('edit', ['shop' => $shop, 'categories' => $categories]);
+    }
