@@ -208,3 +208,9 @@ class ShopController extends Controller
         <div>
     @endauth
 @endsection
+
+## 07:お店情報にユーザー情報を追加しよう
+- カラムを追加するためのマイグレーションファイルを生成
+$ cd lunchmap
+$ php artisan make:migration add_user_id_to_shops_table --table=shops
+
