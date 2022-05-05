@@ -259,3 +259,24 @@ UPDATE shops
 	WHERE id>=2;
 
 なお、Usersモデルに登録されていないユーザーが、Shopsテーブルに登録してあると、お店一覧がエラーになる。
+
+- Shopモデルに、Userへのリレーションを追加
+  - app/Shop.php
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Shop extends Model
+{
+    public function category()
+    {
+        return $this->belongsTo('App\Category');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+}
