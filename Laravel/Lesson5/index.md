@@ -334,3 +334,24 @@ public function store(Request $request)
     $shop->save();
     return redirect()->route('shop.detail', ['id' => $shop->id]);
 }
+
+- showメソッドで、ログインユーザー情報を取得してビューに渡す
+  - app/Http/Controllers/ShopController.php
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Shop  $shop
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $shop = Shop::find($id);
+        $user = \Auth::user();
+        if ($user) {
+            $login_user_id = $user->id;
+        } else {
+            $login_user_id = "";
+        }
+
+        return view('show', ['shop' => $shop, 'login_user_id' => $login_user_id]);
+    }
