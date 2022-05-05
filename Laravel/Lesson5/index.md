@@ -64,3 +64,15 @@ class AppServiceProvider extends ServiceProvider
 - ユーザー管理用のルートとビューを追加
 $ php artisan make:auth
 
+- 共通テンプレートに、ログイン用のコードを追加する
+  - resources/views/layout.blade.php
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
+    <meta name='csrf-token' content='{{ csrf_token() }}'>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' >
+    <title>Lunchmap</title>
+    <style>body {padding-top: 80px;}</style>
+    <script src='{{ asset("js/app.js") }}' defer></script>
+</head>
+
