@@ -509,3 +509,12 @@ Route::delete('/shop/{id}', 'ShopController@destroy')->name('shop.destroy');
 Route::get('/', function () {
     return redirect('/shops');
 });
+
+- コントローラにdestroyメソッドを追記
+  - app/Http/Controllers/ShopController.php:
+    public function destroy($id)
+    {
+        $shop = Shop::find($id);
+        $shop->delete();
+        return redirect('/shops');
+    }
