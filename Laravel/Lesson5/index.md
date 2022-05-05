@@ -214,3 +214,37 @@ class ShopController extends Controller
 $ cd lunchmap
 $ php artisan make:migration add_user_id_to_shops_table --table=shops
 
+- マイグレーションファイルに、user_idカラムを追加
+  - database/migrations/20xx_xx_xx_xxxxxx_add_user_id_to_shops_table
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class AddUserIdToShopsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::table('shops', function (Blueprint $table) {
+            $table->integer('user_id');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::table('shops', function (Blueprint $table) {
+            //
+        });
+    }
+}
