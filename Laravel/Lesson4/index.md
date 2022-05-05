@@ -403,3 +403,18 @@ public function create()
         <a href={{ route('shop.new') }} class='btn btn-outline-primary'>新しいお店</a>
     <div>
 @endsection
+
+## 10:お店の編集フォームを作ろう
+- ルーティングを設定する
+  - routes/web.php
+Route::get('/shops', 'ShopController@index')->name('shop.list');
+Route::get('/shop/new', 'ShopController@create')->name('shop.new');
+Route::post('/shop', 'ShopController@store')->name('shop.store');
+Route::get('/shop/edit/{id}', 'ShopController@edit')->name('shop.edit');
+Route::post('/shop/update/{id}', 'ShopController@update')->name('shop.update');
+
+Route::get('/shop/{id}', 'ShopController@show')->name('shop.detail');
+
+Route::get('/', function () {
+    return redirect('/shops');
+});
