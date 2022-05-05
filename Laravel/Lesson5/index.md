@@ -18,3 +18,14 @@ $ php artisan make:auth
 登録されているルートを確認するには、次のコマンドを実行する。
 
 php artisan route:list
+
+## 03:ユーザー管理用のテーブルを用意しよう
+- データベース設定 > test_auth/.env
+  - test_auth/.env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=myauth
+DB_USERNAME=root
+// DB_PASSWORD=secret
+
