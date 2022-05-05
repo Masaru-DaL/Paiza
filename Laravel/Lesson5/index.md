@@ -29,3 +29,33 @@ DB_DATABASE=myauth
 DB_USERNAME=root
 // DB_PASSWORD=secret
 
+- マイグレート
+$ cd test_auth
+$ php artisan migrate
+
+- paiza-cloud用https対応
+  - app/Providers/AppServiceProvider.php
+※ Laravelのバージョンによっては、メソッドの並び順が異なる場合があります。
+
+class AppServiceProvider extends ServiceProvider
+{
+    /**
+     * Bootstrap any application services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        \URL::forceScheme('https');
+    }
+
+    /**
+     * Register any application services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        //
+    }
+}
