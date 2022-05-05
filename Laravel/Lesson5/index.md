@@ -158,3 +158,53 @@ Laravelではこの「一回使い切りの認証情報」を簡単に利用で�
 本体のapp.jsの8行目で同じディレクトリにあるbootstrap.jsが呼び出されていますが、このbootstrap.jsの中に上の項で解説したcsrf_tokenの認証に関わる処理が記述されており(27-39行目)、csrf_tokenを利用するために読み込む必要のあるスクリプトなのです。
 
 ただし、このapp.jsはWebページがすでに読み込まれている前提で動作します。そのためページの読み込みが終わる前にapp.jsが実行されてしまうとエラーが発生してしまうので、deferを使ってページが読み込まれてから遅れて実行されるように制御しています。
+
+## 06:アクセス制御を追加しよう
+- 登録ユーザーのパスワード
+kirisima:
+- Email: info@paiza.jp
+- Password: k1r1s1m@
+
+paiza:
+- Email: foo@paiza.jp
+- Password: p3a.i1z4a
+
+- ログインしていない時、実行しないメソッドを指定する
+  - app/Http/Controllers/ShopController.php
+class ShopController extends Controller
+{
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index', 'show']);
+    }
+
+- お店一覧のリンクを制御
+  - resources/views/index.blade.php
+@extends('layout')
+
+@section('content')
+    <h1>お店一覧</h1>
+
+    <table class='table table-striped table-hover'>
+        <tr>
+            <th>カテゴリ</th><th>店名</th><th>住所</th>
+        </tr>
+        @foreach ($shops as $shop)
+            <tr>
+                <td>{{ $shop->category->name }}</td>
+                <td>
+                    <a href={{ route('shop.detail', ['id' =>  $shop->id]) }}>
+                        {{ $shop->name }}
+                    </a>
+                </td>
+                <td>{{ $shop->address }}</td>
+            </tr>
+        @endforeach
+    </table>
+
+    @auth
+        <div>
+            <a href='{{ route("shop.new") }}'>新しいお店</a>
+        <div>
+    @endauth
+@endsection
