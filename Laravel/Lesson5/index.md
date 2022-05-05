@@ -59,3 +59,8 @@ class AppServiceProvider extends ServiceProvider
         //
     }
 }
+
+## 05:ログイン機能を追加しよう
+- ユーザー管理用のルートとビューを追加
+$ php artisan make:auth
+
