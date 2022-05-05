@@ -252,3 +252,10 @@ class AddUserIdToShopsTable extends Migration
 - マイグレート
 $ php artisan migrate
 
+- usersテーブルにuser_idを登録
+  - usersテーブルで、idが２以上のレコードに、user_id=2を登録する。
+UPDATE shops
+	SET user_id=2
+	WHERE id>=2;
+
+なお、Usersモデルに登録されていないユーザーが、Shopsテーブルに登録してあると、お店一覧がエラーになる。
