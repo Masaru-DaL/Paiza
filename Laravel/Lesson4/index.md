@@ -457,3 +457,39 @@ Route::get('/', function () {
     </div>
 
 @endsection
+
+## 11:編集内容を更新しよう
+- コントローラのupdate()を追記
+  - app/Http/Controllers/ShopController.php:
+/**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+     public function update(Request $request, $id, Shop $shop)
+     {
+         $shop = Shop::find($id);
+         $shop->name = request('name');
+         $shop->address = request('address');
+         $shop->category_id = request('category_id');
+         $shop->save();
+         return redirect()->route('shop.detail', ['id' => $shop->id]);
+     }
+
+- 詳細ページからリンク
+  - resources/views/show.blade.php
+@extends('layout')
+
+@section('content')
+    <h1>{{ $shop->name }}</h1>
+    <div>
+        <p>{{ $shop->category->name }}</p>
+        <p>{{ $shop->address }}</p>
+    </div>
+
+    <div>
+        <a href={{ route('shop.list' )}}>一覧に戻る</a>
+         | <a href={{ route('shop.edit', ['id' =>  $shop->id]) }}>編集</a>
+    </div>
+@endsection
